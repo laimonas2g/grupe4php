@@ -201,3 +201,46 @@ uasort($raidesKiekis, 'paprastai');
 print_r($raidesKiekis);
 
 echo '<h2>Daugiausiai yra: '. array_key_first($raidesKiekis) .'</h2>';
+
+
+$zve = 'Bebras';
+
+switch($zve) {
+    case 'Bebras':
+        echo '<h3>Piktas Bebras</h3>';
+        break;
+            case 'Barsukas':
+        echo '<h3>Greitas Barsukas</h3>';
+        break;
+            case 'Briedis':
+        echo '<h3>Misko Briedis</h3>';
+        break;
+        default: 
+        echo '<h3>Neaisku kas</h3>';
+};
+
+$kas = match ($zve) {
+    'Bebras' => '<h3>Piktas Bebras</h3>',
+    'Barsukas' => '<h3>Greitas Barsukas</h3>',
+    'Briedis'=> '<h3>Misko Briedis</h3>',
+    default => '<h3>Neaisku kas</h3>'
+};
+
+echo $kas;
+
+$skaicius = 70;
+
+$koks = match (true) {
+    $skaicius <= 10 => '<h3>Maziau nei 10 arba lygu</h3>',
+    $skaicius > 100 => '<h3>Daugiau nei 100</h3>',
+    default => '<h3>Daugiau nei 10</h3>'
+};
+
+echo $koks;
+
+$fun = match (true) {
+    $skaicius < 10 => function (){return '<h3>Maziau nei 10 arba lygu </h3>';},
+    default => function (){return '<h3>Daugiau nei 10</h3>';}
+};
+
+echo $fun();

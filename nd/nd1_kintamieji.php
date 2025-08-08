@@ -97,7 +97,9 @@ if ($kintamasis1 == 0 || $kintamasis2 == 0) {
     echo 'Rezultatas: Kintamieji lygūs';
 } elseif ($kintamasis1 > $kintamasis2) {
     echo 'Rezultatas: ' . round($kintamasis1 / $kintamasis2, 2);
-} else echo 'Rezultatas: ' . round($kintamasis2 / $kintamasis1, 2);
+} else {
+    echo 'Rezultatas: ' . round($kintamasis2 / $kintamasis1, 2);
+}
 
 echo '<br><hr>';
 // 3. Naudokite funkcija rand(). Sukurkite tris kintamuosius 
@@ -115,7 +117,9 @@ if ($number1 > $number2 && $number1 > $number3 && $number2 > $number3) {
     echo "Vidurinė reikšmė: $number2";
 } elseif ($number1 > $number2 && $number1 > $number3 && $number3 > $number2) { 
     echo "Vidurinė reikšmė: $number3";
-} else echo "Vidurinė reikšmė: $number1";
+} else {
+    echo "Vidurinė reikšmė: $number1";
+}
 
 echo '<br><hr>';
 // 4. Įvedami skaičiai -a, b, c –kraštinių ilgiai, 

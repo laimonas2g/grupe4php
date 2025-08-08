@@ -68,8 +68,24 @@ nei | 30 | rūšiavimą kartokite.
  
 <?php
 echo '<pre>';
+// 1. Sugeneruokite masyvą iš 30 elementų 
+// (indeksai nuo 0 iki 29), 
+// kurių reikšmės yra atsitiktiniai skaičiai 
+// nuo 5 iki 25.
+echo '<br><hr>';
 
+$masyvas = [];
+for ($i = 0; $i < 30; $i++) {
+    $masyvas[] = rand(5, 25);
+}
+print_r($masyvas);
+echo '<br><hr>';
 
+$masyvas1 = [];
+foreach (range(0, 29) as $i) {
+    $masyvas1[] = rand(5, 25);
+}
+print_r($masyvas1);
 echo '<br><hr>';
 
 

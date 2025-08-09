@@ -68,47 +68,120 @@ nei | 30 | rūšiavimą kartokite.
  
 <?php
 echo '<pre>';
-// 1. Sugeneruokite masyvą iš 30 elementų 
-// (indeksai nuo 0 iki 29), 
-// kurių reikšmės yra atsitiktiniai skaičiai 
-// nuo 5 iki 25.
+
 echo '<br><hr>';
 
+// 1. Sugeneruokite masyvą iš 30 elementų (indeksai nuo 0 iki 29), 
+// kurių reikšmės yra atsitiktiniai skaičiai nuo 5 iki 25.
+
+// $masyvas = [];
+// for ($i = 0; $i < 30; $i++) {
+//     $masyvas[] = rand(5, 25);
+// }
+// print_r($masyvas);
+// echo '<br><hr>';
+
 $masyvas = [];
-for ($i = 0; $i < 30; $i++) {
+foreach (range(0, 29) as $i) {
     $masyvas[] = rand(5, 25);
 }
 print_r($masyvas);
 echo '<br><hr>';
 
-$masyvas1 = [];
-foreach (range(0, 29) as $i) {
-    $masyvas1[] = rand(5, 25);
+/*
+2. Naudodamiesi 1 uždavinio masyvu:
+a) Suskaičiuokite kiek masyve yra reikšmių didesnių už 10;
+b) Raskite didžiausią masyvo reikšmę ir jos indeksą arba 
+indeksus jeigu yra keli;
+c) Suskaičiuokite visų porinių (lyginių) indeksų reikšmių sumą;
+d) Sukurkite naują masyvą, kurio reikšmės yra 1 uždavinio 
+masyvo reikšmes minus tos reikšmės indeksas;
+e) Papildykite masyvą papildomais 10 elementų su reikšmėmis 
+nuo 5 iki 25, kad bendras masyvas padidėtų iki indekso 39;
+f) Iš masyvo elementų sukurkite du naujus masyvus. 
+Vienas turi būti sudarytas iš neporinių indekso reikšmių, 
+o kitas iš porinių;
+g) Pirminio masyvo elementus su poriniais indeksais padarykite 
+lygius 0 jeigu jie didesni už 15;
+h) Suraskite pirmą (mažiausią) indeksą, kurio elemento reikšmė 
+didesnė už 10;
+i) Naudodami funkciją unset() iš masyvo ištrinkite visus 
+elementus turinčius porinį indeksą;
+*/
+
+// 2. a)Suskaičiuokite kiek masyve yra reikšmių didesnių už 10;
+
+$reiksmesDidesnesUz10 = array_filter($masyvas, function($value) {
+    return $value > 10;
+});
+print_r($reiksmesDidesnesUz10);
+echo '<br><hr>';
+
+$reiksmesDidesnesUz10_kiekis = count($reiksmesDidesnesUz10);
+echo "Kiekis : $reiksmesDidesnesUz10_kiekis";
+echo '<br><hr>';
+
+// 2. b) Raskite didžiausią masyvo reikšmę ir jos indeksą arba 
+// indeksus jeigu yra keli;
+
+
+
+echo '<br><hr>';
+
+// 2. c) Suskaičiuokite visų porinių (lyginių) indeksų 
+// reikšmių sumą;
+echo "Lyginiai indeksai:\n";
+$lyginiaiIndeksai = array_filter($masyvas, fn($x) => $x % 2 === 0, ARRAY_FILTER_USE_KEY);
+print_r($lyginiaiIndeksai);
+
+echo "Suma reiksmiu:\n";
+$sumaLygReiksmiu = array_reduce($lyginiaiIndeksai, fn($a, $b) => $a + $b, 0);
+print_r($sumaLygReiksmiu);
+
+echo '<br><hr>';
+
+// 2. d) Sukurkite naują masyvą, kurio reikšmės yra 1 uždavinio 
+// masyvo reikšmes minus tos reikšmės indeksas;
+
+// echo "Masyvo reikšmes minus seni indeksai:\n";
+// $naujasMasyvasReiksmes = array_values($masyvas);
+// print_r($naujasMasyvasReiksmes);
+
+echo "Masyvo reikšmes minus seni indeksai:\n";
+$naujasMasyvasReiksmes = [];
+
+foreach ($masyvas as $key => $value) {
+    $naujasMasyvasReiksmes[] = $value - $key;
 }
-print_r($masyvas1);
-echo '<br><hr>';
 
+print_r($naujasMasyvasReiksmes);
 
-
-echo '<br><hr>';
-
-
-
-echo '<br><hr>';
-
+// e) Papildykite masyvą papildomais 10 elementų su reikšmėmis 
+// nuo 5 iki 25, kad bendras masyvas padidėtų iki indekso 39;
 
 
 echo '<br><hr>';
 
+// f) Iš masyvo elementų sukurkite du naujus masyvus. 
+// Vienas turi būti sudarytas iš neporinių indekso reikšmių, 
+// o kitas iš porinių;
+
+echo '<br><hr>';
+
+// g) Pirminio masyvo elementus su poriniais indeksais padarykite 
+// lygius 0 jeigu jie didesni už 15;
 
 
 echo '<br><hr>';
 
+// h) Suraskite pirmą (mažiausią) indeksą, kurio elemento reikšmė 
+// didesnė už 10;
 
 
 echo '<br><hr>';
 
-
+// i) Naudodami funkciją unset() iš masyvo ištrinkite visus 
+// elementus turinčius porinį indeksą;
 
 echo '<br><hr>';
 

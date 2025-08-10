@@ -125,6 +125,25 @@ foreach ($arr as $index => $value) {
 echo 'Pirmas mažiausias indeksas: ';
 print_r($maziausiasIndeksas);
 
+$sk1 = rand(-10, 10);
+$sk2 = rand(-10, 10);
+$sk3 = rand(-10, 10);
+
+function spalvinti($n) {
+    if ($n < 0) {
+        $spalva = 'green';
+    } elseif ($n == 0) {
+        $spalva = 'red';
+    } else {
+        $spalva = 'blue';
+    }
+    echo "<div style='color: $spalva;'>$n</div> ";
+}
+
+spalvinti($sk1);
+spalvinti($sk2);
+spalvinti($sk3);
+
 
 echo '<br><hr>';
 

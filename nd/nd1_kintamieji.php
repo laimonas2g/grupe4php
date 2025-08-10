@@ -222,7 +222,22 @@ echo '<br><hr>';
 // nuolaida. Parašykite programą, kuri skaičiuos žvakių kainą 
 // ir atspausdintų atsakymą kiek žvakių ir kokia kaina perkama. 
 // Žvakių kiekį generuokite ​rand()​ funkcija nuo 5 iki 3000.
+
+$zvakesKaina = 1;
 $zvakiuKiekis = rand(5, 3000);
+echo 'Žvakių kiekis: ' . $zvakiuKiekis . '<br>';
+$sumaBeNuolaidos = $zvakesKaina * $zvakiuKiekis;
+
+if ($sumaBeNuolaidos > 2000) {
+    $galutineSuma = $sumaBeNuolaidos * 0.96;
+    echo 'Galutine suma: ' . $galutineSuma . ' EUR';
+} elseif ($sumaBeNuolaidos > 1000) {
+    $galutineSuma = $sumaBeNuolaidos * 0.97;
+    echo 'Galutinr suma: ' . $galutineSuma . ' EUR';
+} else {
+    echo 'Galutine suma: ' . $sumaBeNuolaidos . ' EUR';
+}
+
 
 
 echo '<br><hr>';
@@ -232,7 +247,39 @@ echo '<br><hr>';
 // kurios yra mažesnės nei 10 arba didesnės nei 90. 
 // Abu vidurkius atspausdinkite. Rezultatus apvalinkite iki 
 // sveiko skaičiaus.
+$kint1 = rand(0, 100);
+$kint2 = rand(0, 100);
+$kint3 = rand(0, 100);
 
+echo "$kint1, $kint2, $kint3. Aritmetinis vidurkis: ";
+$aritmetinisVidurkis = round(($kint1 + $kint2 + $kint3) / 3);
+echo $aritmetinisVidurkis;
+
+echo '<br><hr>';
+
+$suma = 0;
+$kiekis = 0;
+
+if ($kint1 >= 10 && $kint1 <= 90) {
+    $suma += $kint1;
+    $kiekis++;
+}
+if ($kint2 >= 10 && $kint2 <= 90) {
+    $suma += $kint2;
+    $kiekis++;
+}
+if ($kint3 >= 10 && $kint3 <= 90) {
+    $suma += $kint3;
+    $kiekis++;
+}
+
+if ($kiekis > 0) {
+    echo "Patobulintas aritmetinis vidurkis: ";
+    $vidurkis2 = round($suma / $kiekis);
+    echo $vidurkis2;
+} else {
+    echo "0 => Visos reiksmes mazesnes nei 10 arba didesnes nei 90!";
+}
 
 
 echo '<br><hr>';

@@ -248,7 +248,7 @@ print_r($raidMas);
 
 $kiekiai = array_count_values($raidMas);
 
-echo "Raidžių kiekiai:";
+echo 'Raidziu kiekiai:';
 echo '<br>';
 foreach ($raides as $raide) {
     $kiekis = $kiekiai[$raide];
@@ -269,10 +269,38 @@ print_r($raidMas);
 
 echo '<br><hr>';
 
+
 // 5. Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. 
 // Sudėkite masyvus, sudėdami atitinkamas reikšmes. 
 // Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) 
 // reikšmių ir kiek unikalių kombinacijų gavote.
+
+$masyvas2 = [];
+for ($i = 0; $i < 3; $i++) {
+    $masyvas2[$i] = [];
+    for ($j = 0; $j < 200; $j++) {
+        $masyvas2[$i][] = $raides[rand(0, 3)];
+    }
+}
+print_r($masyvas2);
+
+$sudetiMas = [];
+for ($i = 0; $i < 200; $i++) {
+    $sudetiMas[] = $masyvas2[0][$i] . $masyvas2[1][$i] . $masyvas2[2][$i];
+}
+print_r($sudetiMas);
+
+$unikaliosKombinacijos = array_unique($sudetiMas);
+echo 'Unikaliu kombinacijiy: ' . count($unikaliosKombinacijos) . '<br>';
+
+$kombinacijuKiekiai = array_count_values($sudetiMas);
+$unikaliosReiksmes = 0;
+foreach ($kombinacijuKiekiai as $kiekis) {
+    if ($kiekis == 1) {
+        $unikaliosReiksmes++;
+    }
+}
+echo "Unikaliu reiksmiu: $unikaliosReiksmes<br>";
 
 echo '<br><hr>';
 

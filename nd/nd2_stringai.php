@@ -81,8 +81,20 @@ echo '<br><hr>';
 // Tiffany's”, “2001: A Space Odyssey” ir 
 // “It's a Wonderful Life”.
 
+function istrintiBalses($string) {
+    $balses = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    return str_replace($balses, '', $string);
+}
 
+$stringas7 = 'An American in Paris';
+$stringas8 = "Breakfast at Tiffany's";
+$stringas9 = '2001: A Space Odyssey';
+$stringas10 = "It's a Wonderful Life";
 
+echo istrintiBalses($stringas7) . "\n";
+echo istrintiBalses($stringas8) . "\n";
+echo istrintiBalses($stringas9) . "\n";
+echo istrintiBalses($stringas10) . "\n";
 
 echo '<br><hr>';
 // 8. Stringe, kurį generuoja toks kodas: 

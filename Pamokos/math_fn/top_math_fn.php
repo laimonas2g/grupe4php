@@ -131,6 +131,11 @@ echo mt_rand(1, 100);   // random integer between 1 and 100
 echo number_format(1234567.891, 2); // 1,234,567.89
 echo number_format(10000);          // 10,000
 
+// ## 21. intdiv($dividend, $divisor)
+// **Description:**  
+// performs integer division.
+
+echo intdiv(10, 3); // Output: 3
 
 
 echo '<br><hr>';

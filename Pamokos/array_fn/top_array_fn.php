@@ -57,13 +57,48 @@ $nums = [1, 2, 3];
 $squares = array_map(fn($n) => $n * $n, $nums);
 print_r($squares); // [1, 4, 9]
 
+$arr = [1, 2, 3];
+$result = array_map(fn($v) => $v === 2 ? 99 : $v, $arr);
+// (condition) ? value_if_true : value_if_false
+// $result = [1, 99, 3]
+
 // 7. array_filter()
 // Filter elements using a callback function.
 $even = array_filter($arr, fn($x) => $x % 2 === 0);
 
+// ARRAY_FILTER_USE_KEY - pass key as the only argument to callback instead of the value
+// ARRAY_FILTER_USE_BOTH - pass both value and key as arguments to callback instead of the value
 $nums = [1, 2, 3, 4, 5];
 $evens = array_filter($nums, fn($n) => $n % 2 === 0, ARRAY_FILTER_USE_KEY);
-print_r($evens); // [2, 4]
+print_r($evens); // [0, 2, 4]
+
+function odd($var)
+{
+    // returns whether the input integer is odd
+    return $var & 1;
+}
+
+function even($var)
+{
+    // returns whether the input integer is even
+    return !($var & 1);
+}
+
+$array1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
+$array2 = [6, 7, 8, 9, 10, 11, 12];
+
+echo "Odd :\n";
+print_r(array_filter($array1, "odd"));
+echo "Even:\n";
+print_r(array_filter($array2, "even"));
+
+// separate an array into odd and even values
+$original = [1, 2, 3, 4, 5, 6];
+$evens = array_filter($original, fn($v) => $v % 2 === 0); // [2, 4, 6]
+$odds  = array_filter($original, fn($v) => $v % 2 !== 0); // [1, 3, 5]
+
+$evens = array_values(array_filter($original, fn($v) => $v % 2 === 0));
+$odds  = array_values(array_filter($original, fn($v) => $v % 2 !== 0));
 
 // 8. array_reduce()
 // Reduce an array to a single value using a callback.
@@ -101,6 +136,10 @@ if (in_array("green", $colors)) {
 // 12. array_search()
 // Search for a value and return its key.
 $key = array_search($needle, $arr);
+// Returns the key for needle if it is found in the array, false otherwise.
+// If needle is found in haystack more than once, the first matching key is returned. 
+// To return the keys for all matching values, 
+// use array_keys() with the optional filter_value parameter instead.
 
 $colors = ["red", "green", "blue"];
 $key = array_search("blue", $colors);
@@ -114,6 +153,19 @@ $input = ["a", "b", "c", "d", "e"];
 $output = array_slice($input, 1, 3);
 print_r($output); // ["b", "c", "d"]
 
+$original = [1, 2, 3, 4, 5, 6];
+// Split after 3 elements
+$firstPart  = array_slice($original, 0, 3); // [1, 2, 3]
+$secondPart = array_slice($original, 3);    // [4, 5, 6]
+
+// Find the index and split:
+$original = [1, 2, 3, 4, 5, 6];
+$splitAt = 4;
+$index = array_search($splitAt, $original); // returns 3
+
+$firstPart = array_slice($original, 0, $index);     // [1, 2, 3]
+$secondPart = array_slice($original, $index);       // [4, 5, 6]
+
 // 14. array_splice()
 // Remove a portion and replace it with something else.
 array_splice($arr, 2, 1, [99]);
@@ -121,6 +173,13 @@ array_splice($arr, 2, 1, [99]);
 $input = ["red", "green", "blue", "yellow"];
 array_splice($input, 1, 2, ["black", "white"]);
 print_r($input); // ["red", "black", "white", "yellow"]
+
+$array1 = ["a" => "red", "b" => "green"];
+$array2 = ["a" => "yellow", "b" => "blue", "c" => "pink"];
+$result = array_replace($array1, $array2);
+// $result = ['a' => 'yellow', 'b' => 'blue', 'c' => 'pink']
+
+
 
 // 15. array_unique()
 // Remove duplicate values.
@@ -175,6 +234,30 @@ array_walk($arr, fn(&$v) => $v *= 2);
 $numbers = [1, 2, 3];
 array_walk($numbers, function(&$v, $k) { $v = $v * 2; });
 print_r($numbers); // [2, 4, 6]
+
+// 21. array_rand()
+// Pick one or more random keys out of an array
+
+$input = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
+$rand_keys = array_rand($input, 2);
+echo $input[$rand_keys[0]] . "\n";
+echo $input[$rand_keys[1]] . "\n";
+
+$letters = ['A', 'B', 'C', 'D'];
+$randomLetter = $letters[array_rand($letters)];
+
+// 22. array_chunk()
+// Split into chunks of N elements
+$original = [1, 2, 3, 4, 5, 6];
+$chunks = array_chunk($original, 3); // [[1,2,3], [4,5,6]]
+// $chunks[0] and $chunks[1] two arrays
+
+// 23. array_fill_keys()
+// Replace all values with a specific value
+$keys = ['a', 'b', 'c'];
+$result = array_fill_keys($keys, 'newvalue');
+// $result = ['a' => 'newvalue', 'b' => 'newvalue', 'c' => 'newvalue']
+
 
 
 echo '<br><hr>';

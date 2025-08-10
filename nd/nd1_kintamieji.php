@@ -94,7 +94,7 @@ echo "K1 = $kintamasis1, K2 = $kintamasis2 ";
 if ($kintamasis1 == 0 || $kintamasis2 == 0) {
     echo 'Rezultatas: Nulis'; 
 } elseif ($kintamasis1 == $kintamasis2) { 
-    echo 'Rezultatas: Kintamieji lygūs';
+    echo 'Rezultatas: Kintamieji lygus';
 } elseif ($kintamasis1 > $kintamasis2) {
     echo 'Rezultatas: ' . round($kintamasis1 / $kintamasis2, 2);
 } else {
@@ -114,9 +114,9 @@ echo "n1: $number1, n2: $number2, n3: $number3";
 echo '<br>';
 
 if ($number1 > $number2 && $number1 > $number3 && $number2 > $number3) {
-    echo "Vidurinė reikšmė: $number2";
+    echo "Vidurine reiksme: $number2";
 } elseif ($number1 > $number2 && $number1 > $number3 && $number3 > $number2) { 
-    echo "Vidurinė reikšmė: $number3";
+    echo "Vidurine reikmse: $number3";
 } else {
     echo "Vidurinė reikšmė: $number1";
 }
@@ -134,7 +134,7 @@ echo "a: $a, b: $b, c: $c";
 echo '<br>';
 
 if ($a + $b > $c && $a + $c > $b && $b + $c > $a) {
-    echo 'Trikampį sudaryti galima!';
+    echo 'Trikampi sudaryti galima';
 } else {
     echo 'Trikampio sudaryti negalima!';
 }
@@ -144,30 +144,77 @@ echo '<br><hr>';
 // sugeneruokite jiems reikšmes nuo 0 iki 2. Suskaičiuokite 
 // kiek yra nulių, vienetų ir dvejetų. 
 // (sprendimui masyvo nenaudoti).
+
 $n1 = rand(0, 2);
 $n2 = rand(0, 2);
 $n3 = rand(0, 2);
 $n4 = rand(0, 2);
-echo "n1: $n1, n2: $n2, n3: $n3, n4: $n4";
-echo '<br>';
 
-if (true) {
-    echo '<br>';
-}
+echo "n1: $n1, n2: $n2, n3: $n3, n4: $n4<br>";
+
+$nuliai = 0;
+$vienetai = 0;
+$dvejetai = 0;
+
+if ($n1 === 0) $nuliai++;
+if ($n2 === 0) $nuliai++;
+if ($n3 === 0) $nuliai++;
+if ($n4 === 0) $nuliai++;
+
+if ($n1 === 1) $vienetai++;
+if ($n2 === 1) $vienetai++;
+if ($n3 === 1) $vienetai++;
+if ($n4 === 1) $vienetai++;
+
+if ($n1 === 2) $dvejetai++;
+if ($n2 === 2) $dvejetai++;
+if ($n3 === 2) $dvejetai++;
+if ($n4 === 2) $dvejetai++;
+
+echo "Nuliu: $nuliai <br>";
+echo "Vienetu: $vienetai<br>";
+echo "Dvejetu: $dvejetai<br>";
 
 echo '<br><hr>';
 // 6. Naudokite funkcija rand(). Sugeneruokite atsitiktinį 
 // skaičių nuo 1 iki 6 ir jį atspausdinkite atitinkame h tage. 
 // Pvz skaičius 3- rezultatas: <h3>3</h3>
 
+$atsitiktinisSkaicius = rand(1, 6);
 
+echo "<h$atsitiktinisSkaicius> $atsitiktinisSkaicius </h$atsitiktinisSkaicius>";
 
 echo '<br><hr>';
 // 7. Naudokite funkcija rand(). Atspausdinkite 3 skaičius 
 // nuo -10 iki 10. Skaičiai mažesni už 0 turi būti žali, 
 // 0 - raudonas, didesni už 0 mėlyni. 
+$sk1 = rand(-10, 10);
+$sk2 = rand(-10, 10);
+$sk3 = rand(-10, 10);
 
+if ($sk1 < 0) {
+    echo "<span style='color:green;'>$sk1</span> ";
+} elseif ($sk1 == 0) {
+    echo "<span style='color:red;'>$sk1</span> ";
+} else {
+    echo "<span style='color:blue;'>$sk1</span> ";
+}
 
+if ($sk2 < 0) {
+    echo "<span style='color:green;'>$sk2</span>";
+} elseif ($sk2 == 0) {
+    echo "<span style='color:red;'>$sk2</span> ";
+} else {
+    echo "<span style='color:blue;'>$sk2</span> ";
+}
+
+if ($sk3 < 0) {
+    echo "<span style='color:green;'>$sk3</span> ";
+} elseif ($sk3 == 0) {
+    echo "<span style='color:red;'>$sk3</span> ";
+} else {
+    echo "<span style='color:blue;'>$sk3</span> ";
+}
 
 echo '<br><hr>';
 // 8. Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 
@@ -175,7 +222,7 @@ echo '<br><hr>';
 // nuolaida. Parašykite programą, kuri skaičiuos žvakių kainą 
 // ir atspausdintų atsakymą kiek žvakių ir kokia kaina perkama. 
 // Žvakių kiekį generuokite ​rand()​ funkcija nuo 5 iki 3000.
-
+$zvakiuKiekis = rand(5, 3000);
 
 
 echo '<br><hr>';

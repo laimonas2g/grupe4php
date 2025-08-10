@@ -113,6 +113,19 @@ $grade = match (true) {
 echo $grade; // Outputs: B
 
 
+$arr = [3, 8, 11, 7, 15, 2, 20];
+
+foreach ($arr as $index => $value) {
+    if ($value > 10) {
+        $smallestIndex = $index;
+        break;
+    }
+}
+
+echo 'Pirmas mažiausias indeksas: ';
+print_r($maziausiasIndeksas);
+
+
 echo '<br><hr>';
 
 echo '</pre>';

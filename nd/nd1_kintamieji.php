@@ -238,8 +238,6 @@ if ($sumaBeNuolaidos > 2000) {
     echo 'Galutine suma: ' . $sumaBeNuolaidos . ' EUR';
 }
 
-
-
 echo '<br><hr>';
 // 9. Naudokite funkcija rand(). Sukurkite tris kintamuosius su 
 // atsitiktinėm reikšmėm nuo 0 iki 100. Paskaičiuokite jų 
@@ -281,7 +279,6 @@ if ($kiekis > 0) {
     echo "0 => Visos reiksmes mazesnes nei 10 arba didesnes nei 90!";
 }
 
-
 echo '<br><hr>';
 // 10. Padarykite skaitmeninį laikrodį, rodantį valandas, minutes 
 // ir sekundes. Valandom, minutėm ir sekundėm sugeneruoti 
@@ -289,8 +286,45 @@ echo '<br><hr>';
 // nuo 0 iki 300. Tai papildomos sekundės. Skaičių pridėkite 
 // prie jau sugeneruoto laiko. Atspausdinkite laikrodį prieš ir 
 // po sekundžių pridėjimo ir pridedamų sekundžių skaičių.
+$valanda = rand(0, 23);
+$minute = rand(0, 59);
+$sekunde = rand(0, 59);
+$randomNumber = rand(0, 300);
 
+function duSk($num) {
+    return ($num < 10 ? '0' : '') . $num;
+}
 
+echo 'Laikrodis_1: <br>';
+echo duSk($valanda) . ' : ' . duSk($minute) . ' : ' . duSk($sekunde) . '<br>';
+
+$sekunde += $randomNumber;
+
+if ($sekunde >= 60) {
+    $ekstraMinutes = 0;
+    while ($sekunde >= 60) {
+        $sekunde -= 60;
+        $ekstraMinutes++;
+    }
+    $minute += $ekstraMinutes;
+}
+if ($minute >= 60) {
+    $ekstraValandos = 0;
+    while ($minute >= 60) {
+        $minute -= 60;
+        $ekstraValandos++;
+    }
+    $valanda += $ekstraValandos;
+}
+
+if ($valanda >= 24) {
+    while ($valanda >= 24) {
+        $valanda -= 24;
+    }
+}
+
+echo "Laikrodis_2 +$randomNumber"."s:<br>";
+echo duSk($valanda) . ' : ' . duSk($minute) . ' : ' . duSk($sekunde);
 
 echo '<br><hr>';
 // Papildomas.
@@ -299,14 +333,39 @@ echo '<br><hr>';
 // reikšmes viename strige, išrūšiuotas nuo didžiausios iki 
 // mažiausios, atskirtas tarpais. 
 // Naudoti ciklų ir masyvų NEGALIMA.
+$kint1 = rand(1000, 9999);
+$kint2 = rand(1000, 9999);
+$kint3 = rand(1000, 9999);
+$kint4 = rand(1000, 9999);
+$kint5 = rand(1000, 9999);
+$kint6 = rand(1000, 9999);
+echo "$kint1 $kint2 $kint3 $kint4 $kint5 $kint6 <br>\n";
 
+if ($kint1 < $kint2) { $laikinas = $kint1; $kint1 = $kint2; $kint2 = $laikinas; }
+if ($kint1 < $kint3) { $laikinas = $kint1; $kint1 = $kint3; $kint3 = $laikinas; }
+if ($kint1 < $kint4) { $laikinas = $kint1; $kint1 = $kint4; $kint4 = $laikinas; }
+if ($kint1 < $kint5) { $laikinas = $kint1; $kint1 = $kint5; $kint5 = $laikinas; }
+if ($kint1 < $kint6) { $laikinas = $kint1; $kint1 = $kint6; $kint6 = $laikinas; }
+
+if ($kint2 < $kint3) { $laikinas = $kint2; $kint2 = $kint3; $kint3 = $laikinas; }
+if ($kint2 < $kint4) { $laikinas = $kint2; $kint2 = $kint4; $kint4 = $laikinas; }
+if ($kint2 < $kint5) { $laikinas = $kint2; $kint2 = $kint5; $kint5 = $laikinas; }
+if ($kint2 < $kint6) { $laikinas = $kint2; $kint2 = $kint6; $kint6 = $laikinas; }
+
+if ($kint3 < $kint4) { $laikinas = $kint3; $kint3 = $kint4; $kint4 = $laikinas; }
+if ($kint3 < $kint5) { $laikinas = $kint3; $kint3 = $kint5; $kint5 = $laikinas; }
+if ($kint3 < $kint6) { $laikinas = $kint3; $kint3 = $kint6; $kint6 = $laikinas; }
+
+if ($kint4 < $kint5) { $laikinas = $kint4; $kint4 = $kint5; $kint5 = $laikinas; }
+if ($kint4 < $kint6) { $laikinas = $kint4; $kint4 = $kint6; $kint6 = $laikinas; }
+
+if ($kint5 < $kint6) { $laikinas = $kint5; $kint5 = $kint6; $kint6 = $laikinas; }
+
+echo 'Išrūšiuotas nuo didžiausios iki mažiausios: <br>';
+echo "$kint1 $kint2 $kint3 $kint4 $kint5 $kint6";
 
 echo '<br><hr>';
-
-
-
-echo '<br><hr>';
-
 
 
 echo '</pre>';
+?>

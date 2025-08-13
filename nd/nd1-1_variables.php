@@ -5,6 +5,8 @@
 /* 1. Use the rand() function. Create two variables and assign them random values between 1 and 10. 
 Output their sum, difference, product, and quotient (rounded to 2 decimal places). */
 
+
+
 /* 2. Use the rand() function. Create three variables with random values from 0 to 100. 
 Print out the largest and the smallest of the three numbers. */
 

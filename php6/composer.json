@@ -1,0 +1,16 @@
+{
+    "name": "laimo/php6",
+    "description": "Geras laikas",
+    "autoload": {
+        "psr-4": {
+            "Laimo\\Php6\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "laimonas2g",
+            "email": "laimonas2g@gmail.com"
+        }
+    ],
+    "require": {}
+}

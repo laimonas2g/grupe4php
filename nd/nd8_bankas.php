@@ -17,9 +17,12 @@ Asmens kodas turi būti unikalus. Negali būti dviejų vartotojų su tuo pačiu 
 Duomenų bazė - JSON failas (arba serializuotas failas).
 Informacijos keitimui naudoti POST metodą ir peradresavimą, kitais atvejais GET metodą.
 Po kiekvienos įrašymo (trynimo) operacijos turi būti parodomas pranešimas apie operacijos rezultatus.
-Sąskaitos numeris b puslapyje (naujos sąskaitos kūrimas) turi būti sugeneruojamas automatiškai ir html atvaizduojamas kaip readonly. Sąskaita turi atitikti IBAN formatą. Bankas lietuviškas.
+Sąskaitos numeris b puslapyje (naujos sąskaitos kūrimas) turi būti sugeneruojamas automatiškai ir html atvaizduojamas kaip readonly. 
+Sąskaita turi atitikti IBAN formatą. Bankas lietuviškas.
 Asmens kodas turi būti tikrinamas ar atitinka taisykles.
 Vardas ir pavardė ilgesni nei 3 simboliai.
 Tikrinimas tik BackEnd’e. FrontEnd’e tikrinimo nedarykite.
-Papildomai galite padaryti prisijungimą prie banko jo darbuotojams, kad tik prisijungę vartotojai (banko darbuotojai) galėtų dirbti su aplikacija. Prisijungimo duomenis saugokite atskirame JSON faile. Slaptažodžius saugokite užkoduotus (hash).
+Papildomai galite padaryti prisijungimą prie banko jo darbuotojams, 
+kad tik prisijungę vartotojai (banko darbuotojai) galėtų dirbti su aplikacija. 
+Prisijungimo duomenis saugokite atskirame JSON faile. Slaptažodžius saugokite užkoduotus (hash).
  -->

@@ -1,8 +1,11 @@
 
 ///////////// 1. /////////////
+// Į tagus h1 - h4 įrašykite skaičius nuo 1 iki 4 (skaičius atitinka tagą).
 
 
 ///////////// 2. /////////////
+// Naudodami JS iš vieno div tago padarykite mėlyną keturkampį, 
+// o iš kito raudoną apskritimą.
 
 
 ///////////// 3. /////////////
@@ -49,7 +52,7 @@
 // Užpildyti daugybos lentelę, esančią tage section su id=go9.
 
 
-///////////// Question - 10. /////////////
+///////////// 10. /////////////
 // Keturkapius, esančius tage section su id=go10, 
 // kurių plotas didesnis nei 10000 (px) nuspalvinkite raudonai.
 

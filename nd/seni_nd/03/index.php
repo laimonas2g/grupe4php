@@ -51,7 +51,6 @@ const C = [
 // nuskaitytais gyvūnais išdėliotais abėcėline tvarka.
 
 
-
 ///////////// 3. /////////////
 // Html faile sukurkite ul tagą (tiesiogiai). 
 // Į sukurtą tagą, su JS, sudėkite li tagus su iš 
@@ -101,15 +100,5 @@ const C = [
 // Gyvūnų pavadinimų raidžių dydis- atsitiktinis nuo 10px iki 100px. Gyvūnų pavadinimų 
 // raidžių spalva atsitiktinė. Pavadinimai turi tolygiai (pagal funkciją rand()) dengti 
 // visą ekraną (funkcijos duotos 02. DOM ir Cycles (one & four edition)).#fun
-
-
-
-
-
-
-
-
-
-
 
 

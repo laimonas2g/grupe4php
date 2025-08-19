@@ -3,7 +3,8 @@
     "description": "Geras laikas",
     "autoload": {
         "psr-4": {
-            "Laimo\\Php6\\": "src/"
+            "mano\\vardas\\toks\\": "",
+            "Driftas\\": "su/"
         }
     },
     "authors": [
@@ -12,5 +13,7 @@
             "email": "laimonas2g@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "ramsey/uuid": "^4.9"
+    }
 }

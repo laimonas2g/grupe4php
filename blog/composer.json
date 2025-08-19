@@ -1,0 +1,17 @@
+{
+    "name": "bebro/blogas",
+    "description": "Paprastas MVC pavyzdys",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bebro\\Blogas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bebras",
+            "email": "bebras@gmail.com"
+        }
+    ],
+    "require": {}
+}

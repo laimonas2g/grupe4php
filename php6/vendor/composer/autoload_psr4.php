@@ -6,5 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Laimo\\Php6\\' => array($baseDir . '/src'),
+    'mano\\vardas\\toks\\' => array($baseDir . '/'),
+    'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
+    'Driftas\\' => array($baseDir . '/su'),
+    'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
 );

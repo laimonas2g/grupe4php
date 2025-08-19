@@ -1,0 +1,56 @@
+<?php return array(
+    'root' => array(
+        'name' => 'laimo/php6',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '9ad27655c8970c3c138965ad23b3647f5b3d219e',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'brick/math' => array(
+            'pretty_version' => '0.13.1',
+            'version' => '0.13.1.0',
+            'reference' => 'fc7ed316430118cc7836bf45faff18d5dfc8de04',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../brick/math',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'laimo/php6' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '9ad27655c8970c3c138965ad23b3647f5b3d219e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'ramsey/collection' => array(
+            'pretty_version' => '2.1.1',
+            'version' => '2.1.1.0',
+            'reference' => '344572933ad0181accbf4ba763e85a0306a8c5e2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ramsey/collection',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'ramsey/uuid' => array(
+            'pretty_version' => '4.9.0',
+            'version' => '4.9.0.0',
+            'reference' => '4e0e23cc785f0724a0e838279a9eb03f28b092a0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ramsey/uuid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rhumsaa/uuid' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '4.9.0',
+            ),
+        ),
+    ),
+);

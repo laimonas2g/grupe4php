@@ -4,6 +4,7 @@ namespace mano\vardas\toks;
 // use mano\vardas\toks\Matematika;
 use Driftas\Atvaizdavimas;
 use mano\vardas\toks\Atvaizdavimas as KitasAtvaizdavimas;
+use Ramsey\Uuid\Uuid as U;
 
 $A = 'Labas';
 $B = 'Bebrai';
@@ -15,11 +16,13 @@ $C .= $A; // $C = $C . $A
 
 echo $C;
 
-require __DIR__ . '/Planas.php';
-require __DIR__ . '/Planas2.php';
-require __DIR__ . '/Atvaizdavimas.php';
-require __DIR__ . '/Matematika.php';
-require __DIR__ . '/su/Atvaizdavimas.php';
+// require __DIR__ . '/Planas.php';
+// require __DIR__ . '/Planas2.php';
+// require __DIR__ . '/Atvaizdavimas.php';
+// require __DIR__ . '/Matematika.php';
+// require __DIR__ . '/su/Atvaizdavimas.php';
+
+require __DIR__ . '/vendor/autoload.php';
 
 $atv = new Matematika();
 
@@ -48,6 +51,9 @@ var_dump(
 );
 
 echo KitasAtvaizdavimas::ATV;
+
+echo '<br>';
+echo  U::uuid4();
 
 // const PI = 3.14159;
  

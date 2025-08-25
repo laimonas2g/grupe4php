@@ -8,8 +8,8 @@
 </head>
 <body>
     <?php
-    if (($title ?? '') != '404 Not Found') {
+    if (($title ?? '') != '404 Not Found' && ($title ?? '') != 'Login' && ($title ?? '') != 'Register') {
         include __DIR__ . '/menu.php';
     }
     ?>
-    <?php include __DIR__ . '/message.php'; ?>
+    <?php include __DIR__ . '/message.php' ?>

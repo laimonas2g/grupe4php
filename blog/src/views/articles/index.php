@@ -9,6 +9,12 @@
                     <?= htmlspecialchars($article['title']) ?> 
                     (by <?= htmlspecialchars($article['author']) ?>)
                 </a>
+                <div class="buttons">
+                    <a href="<?= $url ?>article/edit/<?= $article['id'] ?>" class="button">Edit</a>
+                    <form action="<?= $url ?>article/delete/<?= $article['id'] ?>" method="POST" class="inline-form">
+                        <button type="submit" class="button">Delete</button>
+                    </form>
+                </div>
             </li>
             <?php endforeach; ?>
         </ul>

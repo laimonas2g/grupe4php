@@ -4,7 +4,6 @@ namespace Bebro\Blogas\Models;
 
 class Box extends Model
 {
-    public $id;
     public $count;
 
     static public function all(): array
@@ -25,7 +24,7 @@ class Box extends Model
         ';
 
         $stmt = self::getPdo()->prepare($sql);
-        $stmt->execute([$id]); // klaida istaisyta?
+        $stmt->execute([$id]);
         $data = $stmt->fetch();
 
         if (!$data) {
@@ -36,7 +35,7 @@ class Box extends Model
         $box->id = $data['id'];
         $box->count = $data['count'];
 
-        return $box;
+        return $box; 
     }
 
     public function __construct()

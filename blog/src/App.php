@@ -24,6 +24,16 @@ class App
 
 
 
+    /**
+     * Handles the routing logic for the application.
+     *
+     * This private static method determines the appropriate controller and action
+     * to execute based on the current request. It is responsible for parsing the
+     * request URI, matching it to defined routes, and invoking the corresponding
+     * handler.
+     *
+     * @return void
+     */
     private static function route()
     {
         $uri = $_SERVER['REQUEST_URI'];
@@ -36,7 +46,7 @@ class App
 
         $method = $_SERVER['REQUEST_METHOD'];
 
-        if ($params[0] === 'box' && !Auth::check()) {
+        if ($params[0] === 'article' && !Auth::check()) {
             return App::redirect('login', ['message' =>
                 [
                     'text' => 'You must be logged in to access this page.',

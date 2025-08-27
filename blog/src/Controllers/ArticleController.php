@@ -83,11 +83,62 @@ class ArticleController
         if (!$article) {
             return App::view('404', ['title' => 'Article Not Found']);
         }
-        return App::view('articles/edit', ['article' => $article]);
+        $csrfToken = bin2hex(random_bytes(32));
+        $_SESSION['csrf_token'] = $csrfToken;
+        return App::view('articles/edit', ['article' => $article, 'csrf_token' => $csrfToken]);
+    }
+
+    public function update($id)
+    {
+        $article = Article::find($id);
+        if (!$article) {
+            return App::view('404', ['title' => 'Article Not Found']);
+        }
+
+        if (
+            !isset($_POST['csrf_token']) ||
+            !isset($_SESSION['csrf_token']) ||
+            $_POST['csrf_token'] !== $_SESSION['csrf_token']
+        ) {
+            return App::view('403', ['title' => 'Forbidden']);
+        }
+        unset($_SESSION['csrf_token']);
+
+
+        $oldImage = $article->image ?? '';
+
+        $article->title = $_POST['title'] ?? '';
+        $article->content = $_POST['content'] ?? '';
+        $article->author = $_POST['author'] ?? '';
+        $article->image = $_FILES['image'] ?? null;
+        $deleteImage = isset($_POST['delete_image']) ? (bool)$_POST['delete_image'] : false;
+
+        if ($article->image) {
+            $this->deleteImage($oldImage);
+            $article->image = $this->uploadImage($article->image);
+        } elseif ($deleteImage) {
+            $this->deleteImage($oldImage);
+            $article->image = null;
+        } else {
+            $article->image = $oldImage;
+        }
+
+        $article->update($id);
+
+        return App::redirect('article', ['message' =>
+            [
+                'text' => 'Article updated successfully!',
+                'type' => 'success'
+            ]
+        ]);
     }
 
     private function deleteImage(string $image): void
     {
+        if (!$image) {
+            return;
+        }
+
         $imagePath = __DIR__ . '/../../public/' . $image;
         if (file_exists($imagePath)) {
             unlink($imagePath);

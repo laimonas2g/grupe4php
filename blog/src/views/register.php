@@ -1,3 +1,4 @@
+
 <form method="post" action="<?= $url ?>register">
     <h1>Register</h1>
     <label>Username:<br>

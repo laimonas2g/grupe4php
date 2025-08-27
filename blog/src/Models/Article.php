@@ -11,29 +11,63 @@ class Article extends Model
     {
         parent::__construct();
     }
-    
-    
-    public function index(): array
+
+    static public function all(): array
     {
         $sql = '
-            SELECT * 
-            FROM articles
+            SELECT * FROM articles
         ';
 
-        $stmt = $this->pdo->query($sql);
+        $stmt = self::getPdo()->query($sql);
         return $stmt->fetchAll();
     }
 
-    public function show(int $id): bool|array
+    static public function find(int $id): ?Article  // tipizacija sako kad reikia null (?) arba Article objekto
     {
         $sql = '
-            SELECT * 
-            FROM articles
+            SELECT * FROM articles
+            WHERE id = ?
+        ';
+
+        $stmt = self::getPdo()->prepare($sql);
+        $stmt->execute([$id]);
+        $data = $stmt->fetch();
+
+        if (!$data) {
+            return null;
+        }
+
+        $article = new self();
+        $article->id = $data['id'];
+        $article->title = $data['title'];
+        $article->content = $data['content'];
+        $article->author = $data['author'];
+        $article->image = $data['image'];
+
+        return $article; 
+    }
+
+    public function store()
+    {
+        $sql = '
+            INSERT INTO articles
+            (title, content, author, image)
+            VALUES (?, ?, ?, ?)
+        ';
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$this->title, $this->content, $this->author, $this->image]);
+    }
+
+    public function delete($id)
+    {
+        $sql = '
+            DELETE FROM articles
             WHERE id = ?
         ';
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id]);
-        return $stmt->fetch();
     }
+    
 }

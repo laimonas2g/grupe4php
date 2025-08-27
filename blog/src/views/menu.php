@@ -9,6 +9,7 @@
         <li><a href="<?= $url ?>box">Dėžutės</a></li>
         <li><a href="<?= $url ?>box/create">Nauja dėžutė</a></li>
         <li><a href="<?= $url ?>color">Spalvos</a></li>
+        <li><a href="<?= $url ?>article/create">Naujas straipsnis</a></li>
 
         <li style="width: 200px;"></li>
 

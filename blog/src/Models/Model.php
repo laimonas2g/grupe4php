@@ -1,17 +1,17 @@
 <?php
 namespace Bebro\Blogas\Models;
- 
+
 use PDO;
- 
+
 class Model
 {
     protected $pdo;
- 
+
     public function __construct()
     {
         $this->pdo = self::getPdo();
     }
- 
+
     static public function getPdo(): PDO
     {
         $host = '127.0.0.1';
@@ -19,7 +19,7 @@ class Model
         $user = 'root';
         $pass = '';
         $charset = 'utf8mb4';
- 
+
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -28,6 +28,6 @@ class Model
         ];
         return new PDO($dsn, $user, $pass, $options);
     }
- 
- 
+
+
 }

@@ -1,0 +1,15 @@
+<form method="post" action="<?= $url ?>article/store">
+    <label>Article Title:<br>
+        <input type="text" name="title" required>
+    </label>
+    <label>Article Content:<br>
+        <textarea name="content" required></textarea>
+    </label>
+    <label>Article Author:<br>
+        <input type="text" name="author" required>
+    </label>
+    <!-- <label>Article Image URL:<br>
+        <input type="text" name="image" required>
+    </label> -->
+    <button type="submit">Create Article</button>
+</form>

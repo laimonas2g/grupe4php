@@ -8,7 +8,7 @@
       
     </head>
     <body>
-        <h1>Welcome to Laravel</h1>
+        <h1>Lara</h1>
     </body>
 </html>
  

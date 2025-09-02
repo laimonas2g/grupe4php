@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="timer" class="panel"></div>
+  <div id="hangman-container">
+    <div id="gallow-horizontal"></div>
+    <div id="gallow-vertical"></div>
+    <div id="gallow-base"></div>
+    <div id="rope"></div>
+    <div id="head" class="hangman-part"></div>
+    <div id="body" class="hangman-part"></div>
+    <div id="left-arm" class="hangman-part"></div>
+    <div id="right-arm" class="hangman-part"></div>
+    <div id="left-leg" class="hangman-part"></div>
+    <div id="right-leg" class="hangman-part"></div>
+  </div>
+  <div id="word" class="panel"></div>
+  <div id="letters" class="panel"></div>
+  <p id="wrong" class="panel"></p>
+  <p id="status" class="panel"></p>
+  <button id="restart" class="btn">Restart</button>
+  <div id="game-modal" class="modal">
+    <div class="modal-content">
+      <p></p>
+      <button id="close-modal" class="btn">Uždaryti</button>
+    </div>
+  </div>
+</body>
+</html>

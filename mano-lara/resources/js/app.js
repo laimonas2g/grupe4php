@@ -1,39 +1,134 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import 'bootstrap';
+import axios from 'axios';
+window.axios = axios;
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-import './bootstrap';
-import { createApp } from 'vue';
 
-/**
- * Next, we will create a fresh Vue application instance. You may then begin
- * registering components with the application instance so they are ready
- * to use in your application's views. An example is included for you.
- */
 
-const app = createApp({});
+window.addEventListener('DOMContentLoaded', _ => {
+    const listBin = document.querySelector('[data-list-bin]');
+    const bodyBin = document.querySelector('[data-body-bin]');
+    const modalBin = document.querySelector('[data-modal-bin]');
+    if (!listBin || !bodyBin) return;
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+    const addlistEvent = _ => {
+        const listUrl = listBin.dataset.listUrl;
+        getList(listUrl);
+    };
 
-// Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
-//     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
-// });
+    const getList = listUrl => {
+        axios.get(listUrl)
+            .then(response => {
+                if (response.data.success) {
+                    listBin.innerHTML = response.data.html;
+                    addCreateEvent();
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching author list:', error);
+            });
+    };
 
-/**
- * Finally, we will attach the application instance to a HTML element with
- * an "id" attribute of "app". This element is included with the "auth"
- * scaffolding. Otherwise, you will need to add an element yourself.
- */
+    addlistEvent();
 
-app.mount('#app');
+
+
+    const addCreateEvent = _ => {
+        const createBtn = document.querySelector('[data-action="create"]');
+        if (!createBtn) return;
+
+        createBtn.addEventListener('click', _ => {
+            const url = createBtn.dataset.actionUrl;
+            axios.get(url)
+                .then(response => {
+                    if (response.data.success) {
+                        bodyBin.innerHTML = response.data.html;
+                        addStoreEvent();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching author create form:', error);
+                });
+        });
+
+        const deleteBtns = listBin.querySelectorAll('[data-action="delete"]');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', _ => {
+                const url = btn.dataset.actionUrl;
+                axios.get(url)
+                    .then(response => {
+                        if (response.data.success) {
+                            modalBin.innerHTML = response.data.html;
+                            addDeleteEvent();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting author:', error);
+                    });
+            });
+        });
+
+        const paginator = listBin.querySelector('[data-paginator]');
+        if (paginator) {
+            const links = paginator.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const url = link.getAttribute('href');
+                    getList(url);
+                });
+            });
+        }
+    };
+
+    const addStoreEvent = _ => {
+        const storeBtn = document.querySelector('[data-action="store"]');
+        const cancelBtn = document.querySelector('[data-action="cancel"]');
+        if (!storeBtn) return;
+
+        cancelBtn?.addEventListener('click', _ => {
+            bodyBin.innerHTML = '';
+        });
+
+        storeBtn.addEventListener('click', _ => {
+            const url = storeBtn.dataset.actionUrl;
+            const form = bodyBin.querySelector('form');
+            if (!form) return;
+            const data = {};
+            new FormData(form).forEach((value, key) => {
+                data[key] = value;
+            });
+            axios.post(url, data)
+                .then(response => {
+                    if (response.data.success) {
+                        bodyBin.innerHTML = '';
+                        addlistEvent();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error creating author:', error);
+                });
+        });
+    };
+
+const addDeleteEvent = _ => {
+        const deleteBtn = modalBin.querySelector('[data-action="delete"]');
+        if (!deleteBtn) return;
+ 
+        deleteBtn.addEventListener('click', _ => {
+            const url = deleteBtn.dataset.actionUrl;
+            axios.delete(url)
+                .then(response => {
+                    if (response.data.success) {
+                        modalBin.innerHTML = '';
+ 
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting author:', error);
+                });
+        });
+    };
+
+});

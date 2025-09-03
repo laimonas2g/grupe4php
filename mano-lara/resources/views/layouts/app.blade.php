@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('books-index') }}">Books List</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('authors-index') }}">Authors List</a>
+                        </li>
                     </ul>
 
 

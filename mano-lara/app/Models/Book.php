@@ -5,5 +5,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillable = ['title', 'author', 'pages', 'description'];
+    protected $fillable = ['title', 'author_id', 'pages', 'description'];
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
 }

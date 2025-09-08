@@ -47,6 +47,15 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        for ($i = 0; $i < 50; $i++) {
+            DB::table('books')->insert([
+                'title' => $faker->sentence(3),
+                'pages' => $faker->numberBetween(100, 1000),
+                'author_id' => $faker->numberBetween(1, 30),
+                'description' => $faker->text(300),
+            ]);
+        }
+
 
 
     }

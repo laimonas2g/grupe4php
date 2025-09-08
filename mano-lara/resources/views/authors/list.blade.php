@@ -3,8 +3,8 @@
         <h2>Authors list</h2>
     </div>
     <div class="card-body">
-        <button class="btn btn-primary mt-2 mb-2" data-action="create" data-action-url="{{ route('authors-create') }}">Add
-            Author</button>
+        <button class="btn btn-primary mt-2 mb-2" data-action="create"
+            data-action-url="{{ route('authors-create') }}">Add Author</button>
         <table class="table">
             <thead>
                 <tr>
@@ -16,20 +16,24 @@
             </thead>
             <tbody>
                 @foreach ($authors as $author)
-                    <tr>
-                        <td>{{ $author->name }}</td>
-                        <td>{{ $author->lastname }}</td>
-                        <td>{{ $author->birth_year }}</td>
-                        <td>
-                            <button data-action="edit" data-action-url="{{ route('authors-edit', $author->id) }}" class="btn btn-warning me-2">Edit</button>
-                            <button data-action="delete" data-action-url="{{ route('authors-delete', $author->id) }}" class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>{{ $author->name }}</td>
+                    <td>{{ $author->lastname }}</td>
+                    <td>{{ $author->birth_year }}</td>
+                    <td>
+                        <button data-action="edit" data-action-url="{{ route('authors-edit', $author->id) }}" class="btn btn-warning me-2">Edit</button>
+                        @if($author->books()->count() > 0)
+                        <span class="text-danger me-2">Author with books</span>
+                        @else
+                        <button data-action="delete" data-action-url="{{ route('authors-delete', $author->id) }}" class="btn btn-danger">Delete</button>
+                        @endif
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
         <div data-paginator>
-            {{ $authors->links() }}
+        {{ $authors->links() }}
         </div>
     </div>
 </div>

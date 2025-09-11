@@ -1,4 +1,6 @@
-export default function Box({plotis, dydis, dar}) {
+import Handle from "./Handle";
+
+export default function Box({plotis, dydis, dar, h}) {
 
     const sizeY = dydis;
     const sizeX = plotis;
@@ -10,6 +12,8 @@ export default function Box({plotis, dydis, dar}) {
             height: sizeY + 'px',
             margin: '20px',
             background: dar.spalva
-        }}></div>
+        }}>
+            <Handle type={h} />
+        </div>
     )
 }

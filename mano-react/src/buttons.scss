@@ -1,0 +1,70 @@
+button {
+    padding: 0.75em 2em;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 0.5em;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        transform 0.15s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+    letter-spacing: 0.03em;
+    position: relative;
+    overflow: hidden;
+ 
+    &:hover, &:focus {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.10);
+        transform: translateY(-2px) scale(1.03);
+        outline: none;
+    }
+ 
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+        transition: opacity 0.2s;
+        border-radius: 8px;
+    }
+    &:hover::after {
+        opacity: 1;
+    }
+}
+ 
+.blue {
+    background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+    &:hover { background: linear-gradient(90deg, #0056b3 0%, #007bff 100%); }
+}
+ 
+.green {
+    background: linear-gradient(90deg, #28a745 0%, #1e7e34 100%);
+    &:hover { background: linear-gradient(90deg, #1e7e34 0%, #28a745 100%); }
+}
+ 
+.red {
+    background: linear-gradient(90deg, #dc3545 0%, #a71d2a 100%);
+    &:hover { background: linear-gradient(90deg, #a71d2a 0%, #dc3545 100%); }
+}
+ 
+.yellow {
+    background: linear-gradient(90deg, #ffc107 0%, #e0a800 100%);
+    color: #212529;
+    &:hover { background: linear-gradient(90deg, #e0a800 0%, #ffc107 100%); }
+}
+ 
+.teal {
+    background: linear-gradient(90deg, #17a2b8 0%, #117a8b 100%);
+    &:hover { background: linear-gradient(90deg, #117a8b 0%, #17a2b8 100%); }
+}
+ 
+.black {
+    background: linear-gradient(90deg, #343a40 0%, #1d2124 100%);
+    &:hover { background: linear-gradient(90deg, #1d2124 0%, #343a40 100%); }
+}

@@ -1,0 +1,25 @@
+@import "bootstrap/scss/bootstrap";
+
+.book-line {
+  display: flex;
+  justify-content: space-between;
+    .book-line-data {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      .title {
+        font-weight: bold;
+      }
+      .author {
+        font-style: italic;
+      }
+      .year {
+        color: gray;
+      }
+    }
+    .book-line-buttons {
+      display: flex;
+      gap: 5px;
+    }
+}
+ 

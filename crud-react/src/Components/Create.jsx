@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Create({setStoreBooks}) {
+export default function Create({setStoreBook}) {
 
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -19,11 +19,15 @@ export default function Create({setStoreBooks}) {
     }
 
     const handleSave = _ => {
-        setStoreBooks({
+        setStoreBook({
             title,
             author,
             published_year
         });
+        // reiktu perkelt kitur
+        setTitle('');
+        setAuthor('');
+        setPublished_year('');
     }
 
     return (

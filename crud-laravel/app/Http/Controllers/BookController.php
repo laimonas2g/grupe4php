@@ -9,9 +9,27 @@ class BookController extends Controller
 {
     public function index() {
         
-        sleep(3); // Simulate a delay for testing purposes
-
+        sleep(3); // Simulate delay
+        
         return Book::all();
 
+    }
+
+    public function store(Request $request) {
+
+        sleep(3); // Simulate delay
+
+        $book = Book::create($request->all());
+        return response()->json(['id' => $book->id], 201);
+    }
+
+    public function destroy($id) {
+
+        sleep(3); // Simulate delay
+
+        // abort(422, 'Simulated error');
+
+        Book::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

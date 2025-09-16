@@ -1,4 +1,4 @@
-export default function List({ books }) {
+export default function List({ books, setDeleteBook }) {
 
     if (null === books) {
         return (
@@ -24,7 +24,8 @@ export default function List({ books }) {
                 <p className="card-text">List of all Books.</p>
                 <ul className="list-group list-group-flush">
                     {
-                        books.map(b => <li key={b.id} className="list-group-item">
+                        books.map(b => b.delete ? null : <li key={b.id} 
+                            className={'list-group-item' + (('' + b.id).startsWith('TMP') ? ' not-active-item' : '')}>
                             <div className="book-line">
                                 <div className="book-line-data">
                                     <div className="title">
@@ -38,8 +39,8 @@ export default function List({ books }) {
                                     </div>
                                 </div>
                                 <div className="book-line-buttons">
-                                    <button type="button" className="btn btn-outline-success">Edit</button>
-                                    <button type="button" className="btn btn-outline-danger">Delete</button>
+                                    <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-success">Edit</button>
+                                    <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-danger" onClick={_ => setDeleteBook(b)}>Delete</button>
                                 </div>
                             </div>
                         </li>)

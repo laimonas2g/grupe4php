@@ -3,24 +3,29 @@
 .book-line {
   display: flex;
   justify-content: space-between;
-    .book-line-data {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      .title {
-        font-weight: bold;
-      }
-      .author {
-        font-style: italic;
-      }
-      .year {
-        color: gray;
-      }
+
+  .book-line-data {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .title {
+      font-weight: bold;
     }
-    .book-line-buttons {
-      display: flex;
-      gap: 5px;
+
+    .author {
+      font-style: italic;
     }
+
+    .year {
+      color: gray;
+    }
+  }
+
+  .book-line-buttons {
+    display: flex;
+    gap: 5px;
+  }
 }
 
 .list-group-item.not-active-item {
@@ -30,4 +35,17 @@
 .modal {
   display: block;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.message-bin {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 400px;
+  max-width: 400px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

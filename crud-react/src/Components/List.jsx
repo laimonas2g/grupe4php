@@ -1,4 +1,4 @@
-export default function List({ books, setDeleteBook }) {
+export default function List({ books, setDeleteBook, setEditBook }) {
 
     if (null === books) {
         return (
@@ -39,7 +39,7 @@ export default function List({ books, setDeleteBook }) {
                                     </div>
                                 </div>
                                 <div className="book-line-buttons">
-                                    <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-success">Edit</button>
+                                    <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-success" onClick={_ => setEditBook(b)}>Edit</button>
                                     <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-danger" onClick={_ => setDeleteBook(b)}>Delete</button>
                                 </div>
                             </div>

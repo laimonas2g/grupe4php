@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import DataContext from "../../Contexts/DataContext";
+import { useContext } from 'react';
+import DataContext from '../../Contexts/DataContext';
 
 export default function List() {
 
-    const { books } = useContext(DataContext);
+    const { books, setDeleteBook } = useContext(DataContext);
 
     if (null === books) {
-
         return (
             <div className="card mt-5">
                 <div className="card-header">
@@ -46,7 +45,7 @@ export default function List() {
                                 </div>
                                 <div className="book-line-buttons">
                                     <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-success" >Edit</button>
-                                    <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-danger" >Delete</button>
+                                    <button disabled={('' + b.id).startsWith('TMP')} type="button" className="btn btn-outline-danger" onClick={_ => setDeleteBook(b)} >Delete</button>
                                 </div>
                             </div>
                         </li>)

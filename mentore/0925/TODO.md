@@ -1,6 +1,6 @@
-# TODO
+# 👽 TODO
 
-## Projekto struktūra
+## 👷 Projekto struktūra
 
 ```MD
 crowdfunding/
@@ -19,7 +19,7 @@ crowdfunding/
 └── README.md
 ```
 
-## TODO's list
+## ✔ TODO's list
 
 ```md
 - [ ] Fix admin/dashboard panel
@@ -30,7 +30,7 @@ crowdfunding/
 - [ ] Add modal popup to search campaigns by title
 ```
 
-## Javascript Kodo Pavyzdys
+## 👨‍💻 Javascript Kodo Pavyzdys
 
 ```javascript
 // src/utils/helpers.js

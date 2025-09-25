@@ -13,3 +13,5 @@ export const CONFIRM_ADDING_NEW_BOOK = 'CONFIRM_ADDING_NEW_BOOK'; // Patvirtinam
 export const UPDATE_BOOK = 'UPDATE_BOOK'; // Atnaujina knygos duomenis
 export const CANCEL_UPDATING_BOOK = 'CANCEL_UPDATING_BOOK'; // Atsaukiame knygos atnaujinima
 export const CONFIRM_UPDATING_BOOK = 'CONFIRM_UPDATING_BOOK'; // Patvirtiname knygos atnaujinima
+
+export const SORT_BOOKS = 'SORT_BOOKS'; // Rusiuojam knygas

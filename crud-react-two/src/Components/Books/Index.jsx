@@ -1,5 +1,6 @@
 import Create from './Create';
 import Delete from './Delete';
+import Edit from './Edit';
 import List from './List';
 
 export default function Index() {
@@ -18,6 +19,7 @@ export default function Index() {
             </div>
         </div>
         <Delete />
+        <Edit />
         </>
     );
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as SETTINGS from '../Constants/settings';
 import * as A from '../Actions/books';
 
-export default function useCreateBook(dispatchBooks, msg) {
+export default function useCreateBook(dispatchBooks, msg, setServerErrors, setServerSuccess) {
 
     const [storeBook, setStoreBook] = useState(null);
 
@@ -23,6 +23,7 @@ export default function useCreateBook(dispatchBooks, msg) {
             .then(res => {
                 console.log(res.data);
                 dispatchBooks(A.confirmAddingNewBook(id, res.data.id));
+                setServerSuccess(res.data);
                 msg({
                     title: 'Stored',
                     text: 'Your book was stored',
@@ -32,6 +33,11 @@ export default function useCreateBook(dispatchBooks, msg) {
             .catch(error => {
                 console.log(error);
                 dispatchBooks(A.cancelAddingNewBook(id));
+
+                if (error.response && error.response.data && error.response.data.errors) {
+                    setServerErrors(error.response.data.errors);
+                }
+
                 msg({
                     title: 'Storing Failed',
                     text: 'Your book was rejected',

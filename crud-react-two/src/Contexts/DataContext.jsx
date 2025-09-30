@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 import useBooks from '../Hooks/useBooks';
 import useDeleteBook from '../Hooks/useDeleteBook';
 import useCreateBook from '../Hooks/useCreateBook';
@@ -12,9 +12,23 @@ export const DataProvider = ({ children }) => {
 
     const { msg } = useContext(MsgContext);
 
+    const [serverErrors, setServerErrors] = useState(null);
+    // galimi serverio klaidų nustatymo būdai:
+    // 1. globalus state'as (kaip čia)
+    // 2. context'as (pvz. ServerErrorsContext)
+    // 3. custom hook'as (pvz. useServerErrors)
+    // 4. state kiekviename komponente atskirai (mažiausiai patogu, bet galima ir taip)
+
+    const [serverSuccess, setServerSuccess] = useState(null);
+    // galimi serverio sėkmės nustatymo būdai:
+    // 1. globalus state'as (kaip čia)
+    // 2. context'as (pvz. ServerSuccessContext)
+    // 3. custom hook'as (pvz. useServerSuccess)
+    // 4. state kiekviename komponente atskirai (mažiausiai patogu, bet galima ir taip)
+
     const [books, dispatchBooks] = useBooks();
     const { deleteBook, setDeleteBook, destroyBook, setDestroyBook } = useDeleteBook(dispatchBooks, msg);
-    const { setStoreBook } = useCreateBook(dispatchBooks, msg);
+    const { setStoreBook } = useCreateBook(dispatchBooks, msg, setServerErrors, setServerSuccess);
     const { editBook, setEditBook, setUpdateBook } = useEditBook(dispatchBooks, msg);
 
 
@@ -25,7 +39,9 @@ export const DataProvider = ({ children }) => {
             books, dispatchBooks,
             deleteBook, setDeleteBook, destroyBook, setDestroyBook,
             setStoreBook,
-            editBook, setEditBook, setUpdateBook
+            editBook, setEditBook, setUpdateBook,
+            serverErrors, setServerErrors,
+            serverSuccess, setServerSuccess
         }}>
             {children}
         </DataContext.Provider>

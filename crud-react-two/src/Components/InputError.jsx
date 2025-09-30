@@ -1,5 +1,5 @@
 export default function InputError({ message }) {
-
+    
     if (!message) {
         return null;
     }

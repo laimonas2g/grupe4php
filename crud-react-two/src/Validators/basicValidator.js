@@ -4,7 +4,7 @@ export function basicValidator(name, target, type, typeParam = null) {
         case 'max':
             if (target.value.length > typeParam) {
                 target.classList.add('is-invalid');
-                return `${name} must be at least ${typeParam} characters long.}`
+                return `${name} must be at least ${typeParam} characters long.`
             }
             return null;
 
@@ -18,7 +18,7 @@ export function basicValidator(name, target, type, typeParam = null) {
         case 'min':
             if (target.value.length < typeParam) {
                 target.classList.add('is-invalid');
-                return `${name} must be at least ${typeParam} characters long.}`;
+                return `${name} must be at least ${typeParam} characters long.`;
             }
             return null;
 

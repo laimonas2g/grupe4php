@@ -1,17 +1,5 @@
 # Process
 
-php artisan install:api
-
-use Laravel\Sanctum\HasApiTokens;
-
-php artisan make:model Category
-php artisan make:controller Api/CategoryController
-
-php artisan make:migration create_categories_table --create=categories
-php artisan migrate
-php artisan make:seeder CategorySeeder
-php artisan db:seed --class=CategorySeeder
-
 API's correct HTTP status codes
 $response->ok() : bool;                  // 200 OK
 $response->created() : bool;             // 201 Created
@@ -30,6 +18,5 @@ $response->unprocessableEntity() : bool; // 422 Unprocessable Entity
 $response->tooManyRequests() : bool;     // 429 Too Many Requests
 $response->serverError() : bool;         // 500 Internal Server Error
 
-// from different project
 php artisan migrate:fresh --seed
 php artisan make:controller LaraController

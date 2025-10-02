@@ -29,11 +29,22 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
+        if ($request->routeIs('lara')) {
+            $labas = 'Labukas lara!';
+        } else {
+            $labas = 'Labas is HandleInertiaRequests.php!';
+        }
+
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
             ],
+            // 'flash' => [
+            //     'message' => fn () => $request->session()->get('message'),
+            // ],
+            'labas' => $labas
         ];
     }
 }

@@ -1,19 +1,41 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import useImage from '@/Hooks/useImage';
+import useCreateProduct from '@/Hooks/useCreateProduct';
 
-export default function Create() {
+export default function Create({ auth, siteUrl }) {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
+    const { image, handleImageChange } = useImage();
 
-    const handleSubmit = (e) => {
+    const { createProduct, loading, error } = useCreateProduct(siteUrl);
+
+
+    const handleSubmit = e => {
         e.preventDefault();
-        // Submit logic here (e.g., API call)
-        alert(`Product: ${name}, Price: ${price}, Description: ${description}`);
+        const dataForm = new FormData();
+        dataForm.append('name', name);
+        dataForm.append('price', price);
+        dataForm.append('description', description);
+        if (image) {
+            dataForm.append('image', image);
+        }
+        // siųsti dataForm į serverį naudojant fetch arba axios
+        const response = createProduct(dataForm);
+        console.log(response);
     };
 
+    useEffect(_ => {
+        if (error) {
+            console.log('Error creating product:', error);
+        }
+    }, [error]);
+
+
+
     return (
-        <AuthenticatedLayout user={{ name: 'User' }}>
+        <AuthenticatedLayout user={auth.user}>
             <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded shadow">
                 <h2 className="text-2xl font-bold mb-4">Add New Product</h2>
                 <form onSubmit={handleSubmit}>
@@ -24,7 +46,6 @@ export default function Create() {
                             className="w-full border px-3 py-2 rounded"
                             value={name}
                             onChange={e => setName(e.target.value)}
-                            required
                         />
                     </div>
                     <div className="mb-4">
@@ -34,8 +55,15 @@ export default function Create() {
                             className="w-full border px-3 py-2 rounded"
                             value={price}
                             onChange={e => setPrice(e.target.value)}
-                            required
                         />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block mb-1 font-semibold">Description</label>
+                        <textarea
+                            className="w-full border px-3 py-2 rounded"
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                        ></textarea>
                     </div>
                     <div className="mb-4">
                         <label className="block mb-1 font-semibold">Product Image</label>
@@ -43,7 +71,11 @@ export default function Create() {
                             type="file"
                             className="w-full border px-3 py-2 rounded"
                             accept="image/*"
+                            onChange={handleImageChange}
                         />
+                    </div>
+                    <div className="mb-4">
+                        {image && <img src={image} alt="Product Preview" className="mt-2" />}
                     </div>
                     <button
                         type="submit"
@@ -56,6 +88,3 @@ export default function Create() {
         </AuthenticatedLayout>
     );
 }
-
-
-

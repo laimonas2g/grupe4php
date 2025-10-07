@@ -17,7 +17,7 @@ class HandleInertiaRequests extends Middleware
     /**
      * Determine the current asset version.
      */
-    public function version(Request $request): ?string
+    public function version(Request $request): string|null
     {
         return parent::version($request);
     }
@@ -29,15 +29,16 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-
+        
         if ($request->routeIs('lara')) {
-            $labas = 'Labukas lara!';
+            $labas = 'Labukas, Lara!';
         } else {
-            $labas = 'Labas is HandleInertiaRequests.php!';
+            $labas = 'Labas is HandleInertiaRequests.php';
         }
-
+        
         return [
             ...parent::share($request),
+            'siteUrl' => env('APP_URL'),
             'auth' => [
                 'user' => $request->user(),
             ],

@@ -6,8 +6,6 @@ use App\Models\Shop;
 use App\Http\Requests\StoreShopRequest;
 use App\Http\Requests\UpdateShopRequest;
 use Inertia\Inertia;
-use App\Http\Controllers\ShopController;
-
 
 class ShopController extends Controller
 {
@@ -24,7 +22,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        return inertia::render('Shop/Create');
+        return Inertia::render('Shop/Create');
     }
 
     /**

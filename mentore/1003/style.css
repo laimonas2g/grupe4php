@@ -1,0 +1,21 @@
+
+h1 {
+    color: blue;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    margin-top: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s ease;
+    &:hover {
+        color: darkred;
+    }
+
+}

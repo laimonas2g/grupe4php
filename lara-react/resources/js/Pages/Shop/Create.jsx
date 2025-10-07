@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useImage from '@/Hooks/useImage';
 import useCreateProduct from '@/Hooks/useCreateProduct';
 
@@ -8,6 +8,7 @@ export default function Create({ auth, siteUrl }) {
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const { image, handleImageChange } = useImage();
+    const imageInputRef = useRef(null);
 
     const { createProduct, loading, error } = useCreateProduct(siteUrl);
 
@@ -19,7 +20,7 @@ export default function Create({ auth, siteUrl }) {
         dataForm.append('price', price);
         dataForm.append('description', description);
         if (image) {
-            dataForm.append('image', image);
+            dataForm.append('image', imageInputRef.current.files[0]);
         }
         // siųsti dataForm į serverį naudojant fetch arba axios
         const response = createProduct(dataForm);
@@ -72,6 +73,7 @@ export default function Create({ auth, siteUrl }) {
                             className="w-full border px-3 py-2 rounded"
                             accept="image/*"
                             onChange={handleImageChange}
+                            ref={imageInputRef}
                         />
                     </div>
                     <div className="mb-4">

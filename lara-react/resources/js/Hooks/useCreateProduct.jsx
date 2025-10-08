@@ -14,7 +14,7 @@ export default function useCreateProduct(url) {
             const response = await axios.post(url + '/shop/products', data);
             return response.data;
         } catch (err) {
-            setError(err.response.data); // nustatome klaidos būseną su serverio atsakymu
+            setError(err); // nustatome klaidos būseną su serverio atsakymu
         } finally {
             setLoading(false); // patenkame visada, nesvarbu ar užklausa pavyko ar ne
         }

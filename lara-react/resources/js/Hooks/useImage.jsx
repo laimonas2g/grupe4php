@@ -16,5 +16,9 @@ export default function useImage() {
         }
     };
 
-    return { image, handleImageChange };
+    const clearImage = _ => {
+        setImage(null);
+    };
+
+    return { image, handleImageChange, clearImage };
 }

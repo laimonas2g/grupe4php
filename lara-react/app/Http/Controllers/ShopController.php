@@ -16,7 +16,11 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
+        $products = Shop::all();
+
+        return Inertia::render('Shop/List', [
+            'products' => $products
+        ]);
     }
 
     /**
@@ -32,6 +36,9 @@ class ShopController extends Controller
      */
     public function store(StoreShopRequest $request)
     {
+        sleep(2); //simuliuojame vėlavimą
+        
+        
         //ar yra failas
         if ($request->hasFile('image')) {
             //gauti failą
@@ -55,14 +62,15 @@ class ShopController extends Controller
         } else {
             $filePath = null; // jei nėra failo, nustatome kintamąjį kaip null
         }
-        Shop::create([
+        $product = Shop::create([
             ...$request->validated(),
             'image_path' => $filePath, // išsaugome failo kelią duomenų bazėje
         ]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Product created successfully'
+            'id' => $product->id,
+            'message' => 'Product created successfully!'
         ], 201);
     }
     

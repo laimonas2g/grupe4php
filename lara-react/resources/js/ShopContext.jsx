@@ -3,13 +3,18 @@ import { createContext, useState } from 'react';
 const ShopContext = createContext();
 
 
-export function ShopProvider({ children }) {
+export function ShopProvider({ children, ...props }) {
 
     const [messages, setMessages] = useState([]);
     const [deleteProduct, setDeleteProduct] = useState(null);
 
+    // console.log('ShopContext props:', props?.initialPage?.props ?? {});
+
+    const [products, setProducts] = useState(props?.initialPage?.props?.products || []);
+    const siteUrl = props?.initialPage?.props?.siteUrl || '';
+    const auth = props?.initialPage?.props?.auth || {};
+
     const addMessage = (msg, type) => {
-        console.log('Validation error:', msg);
         const msgId = Math.random().toString(36).substring(2, 9);
         if (typeof msg === 'string') {
             setMessages(m => [...m, { id: msgId, text: msg, type: type }]);
@@ -29,7 +34,11 @@ export function ShopProvider({ children }) {
     };
 
     return (
-        <ShopContext.Provider value={{ messages, addMessage }}>
+        <ShopContext.Provider value={{
+            auth, siteUrl, products, setProducts,
+            messages, addMessage,
+            deleteProduct, setDeleteProduct
+        }}>
             {children}
         </ShopContext.Provider>
     );

@@ -103,6 +103,24 @@ class ShopController extends Controller
      */
     public function destroy(Shop $shop)
     {
-        //
+        
+        sleep(2); //simuliuojame vėlavimą
+        
+        //DElete image from storage
+        if ($shop->image_path) {
+            $imagePath = storage_path('app/public/' . $shop->image_path);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
+        // dd($shop);
+                
+        $shop->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Product deleted successfully!'
+        ]);
     }
 }

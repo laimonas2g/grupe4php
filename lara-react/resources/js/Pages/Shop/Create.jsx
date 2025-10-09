@@ -4,16 +4,16 @@ import useImage from '@/Hooks/useImage';
 import useCreateProduct from '@/Hooks/useCreateProduct';
 import ShopContext from '@/ShopContext';
 
-export default function Create({ auth, siteUrl }) {
+export default function Create() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const { image, handleImageChange, clearImage } = useImage();
     const imageInputRef = useRef(null);
-
+    const { addMessage, auth, siteUrl } = useContext(ShopContext);
     const { createProduct, loading, error } = useCreateProduct(siteUrl);
 
-    const { addMessage } = useContext(ShopContext);
+    
 
 
     const handleSubmit = e => {

@@ -22,10 +22,10 @@ Route::prefix('shop/products')->name('shop.products.')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('index');
     Route::get('/create', [ShopController::class, 'create'])->name('create');
     Route::post('/', [ShopController::class, 'store'])->name('store');
-    Route::get('/{product}', [ShopController::class, 'show'])->name('show');
-    Route::get('/{product}/edit', [ShopController::class, 'edit'])->name('edit');
-    Route::put('/{product}', [ShopController::class, 'update'])->name('update');
-    Route::delete('/{product}', [ShopController::class, 'destroy'])->name('destroy');
+    Route::get('/{shop}', [ShopController::class, 'show'])->name('show');
+    Route::get('/{shop}/edit', [ShopController::class, 'edit'])->name('edit');
+    Route::put('/{shop}', [ShopController::class, 'update'])->name('update');
+    Route::delete('/{shop}', [ShopController::class, 'destroy'])->name('destroy');
 });
 
 

@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
+import ShopContext from '@/ShopContext';
 
-export default function useCreateProduct(url) {
+export default function useDeleteProduct() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { siteUrl } = useContext(ShopContext);
 
-    const createProduct = async (data) => {
+    console.log('API URL:', siteUrl);
+
+    const destroyProduct = async (data) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.post(url + '/shop/products', data);
+            const response = await axios.delete(siteUrl + '/shop/products/' + data.id);
             return response.data;
         } catch (err) {
             setError(err); // nustatome klaidos būseną su serverio atsakymu
@@ -18,5 +22,5 @@ export default function useCreateProduct(url) {
         }
     };
 
-    return { createProduct, loading, error };
+    return { destroyProduct, loading, error };
 }

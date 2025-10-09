@@ -1,6 +1,14 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { useContext } from 'react';
+import ShopContext from '@/ShopContext';
 
-export default function List({ auth, siteUrl, products }) {
+export default function List() {
+
+
+    const { setDeleteProduct, auth, siteUrl, products } = useContext(ShopContext);
+
+
+
     return (
         <AuthenticatedLayout user={auth.user}>
             <div className="container mx-auto px-4">
@@ -23,7 +31,10 @@ export default function List({ auth, siteUrl, products }) {
                                 <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
                                     Edit
                                 </button>
-                                <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+                                <button
+                                    className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+                                    onClick={_ => setDeleteProduct(product)}
+                                >
                                     Delete
                                 </button>
                             </div>
